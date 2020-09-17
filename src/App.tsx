@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import AppLayout from './component/application/AppLayout'
+import CrmHeader from './component/crm/CrmHeader'
+import CrmPage from './component/crm/CrmPage'
+import AboutPage from './component/about/AboutPage'
+import PageNotFoundPage from './component/notfound/PageNotFoundPage'
 
-function App() {
+import { useCrmInitDataHook } from './model/crm_data_init_hook'
+
+import { useLocation } from 'react-router-dom'
+
+const CrmApp: React.FC = () => {
+  useCrmInitDataHook()
+
+  let body = <PageNotFoundPage />
+  switch (useLocation().pathname) {
+    case '/':      { body = <CrmPage />;  break }
+    case '/crm':   { body = <CrmPage />;  break }
+    case '/about': { body = <AboutPage />; break }
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <AppLayout 
+      header = {<CrmHeader />}
+      body = {body}
+    />
+    );
 }
 
-export default App;
+export default CrmApp
