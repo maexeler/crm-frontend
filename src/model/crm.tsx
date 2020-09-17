@@ -6,10 +6,10 @@ export interface Customer {
 }
 
 export interface Memo {
-    id: UniqueKey
-    customer_id: UniqueKey
-    note: string
-    date: number
+    id: UniqueKey,
+    customer_id: UniqueKey,
+    note: string,
+    date: number, // milliseconds
 }
 
 export class CustomerImpl implements Customer {
