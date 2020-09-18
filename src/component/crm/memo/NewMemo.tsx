@@ -1,5 +1,4 @@
 import React from 'react'
-import { Grid, Typography } from '@material-ui/core'
 
 import  MemoForm from './MemoForm'
 import { MemoImpl } from '../../../model/crm'
@@ -14,21 +13,14 @@ const NewMemo: React.FC<NewMemoProps> = (props) => {
 
     if (!customer) { return null }
 
-    return (<>
-        <Grid container direction='column' spacing={1}>
-            <Grid item >
-                <Typography variant='h4'>Add a new Memo</Typography>
-            </Grid>
-            <Grid item >
-                <MemoForm 
-                    memo={new MemoImpl(customer, '')}
-                    submitText='Create new Memo'
-                    submitFunction={(memo) => { addMemo(memo) }}
-                    resetFormAfterSubmit={true}
-                />
-            </Grid>
-        </Grid>
-    </>)
+    return (
+        <MemoForm 
+            memo={new MemoImpl(customer, '')}
+            submitText='Create new Memo'
+            submitFunction={(memo) => { addMemo(memo) }}
+            resetFormAfterSubmit={true}
+        />
+    )
 }
 
 export default NewMemo

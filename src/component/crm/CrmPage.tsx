@@ -3,6 +3,8 @@ import { Grid, Paper } from '@material-ui/core'
 
 import CustomerList from './customer/CustomerList'
 import CustomerView from './customer/CustomerView'
+import MemoView from './memo/MemoView'
+import MemoList from './memo/MemoList'
 
 interface CrmPageProps {}
 
@@ -14,7 +16,11 @@ const CrmPage: React.FC<CrmPageProps> = (props) => {
                 <CustomerList />
             </Grid>
             <Grid item xs={12} sm={8}>
-                <CustomerView />
+                <Grid container direction='column'>
+                    <Grid item><CustomerView /></Grid>
+                    <Grid item><MemoView /></Grid>
+                    <Grid item><MemoList /></Grid>
+                </Grid>
             </Grid>
         </Grid>
         </Paper>

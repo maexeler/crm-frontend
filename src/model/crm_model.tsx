@@ -28,6 +28,9 @@ export interface CrmModel {
     setSelectedMemo: Action<CrmModel, Memo>
 
     memosForCustomer: Computed<CrmModel, Memo[]>
+
+    _getMemosForCustomer(state:any): Memo[]
+
 }
 
 export const crmModel: CrmModel = {
@@ -42,6 +45,9 @@ export const crmModel: CrmModel = {
     addCustomer: action((state, customer) => {
         customer.id = shortid() // Generate unique id
         state.customers = [{...customer}, ...state.customers]
+        // Adding a customer means autoselect it
+        state.selectedCustomer = {...customer}
+        state.selectedMemo = null
     }),
 
     modifyCustomer: action((state, customer) => {
@@ -67,6 +73,8 @@ export const crmModel: CrmModel = {
     addMemo: action((state, memo) => {
         memo.id = shortid() // Generate unique id
         state.memos = [{...memo}, ...state.memos]
+        // Adding a memo means autoselect it
+        state.selectedMemo = {...memo}
     }),
 
     modifyMemo: action((state, memo) => {
@@ -95,6 +103,11 @@ export const crmModel: CrmModel = {
             state.selectedMemo = null
         }
         state.selectedCustomer = customer
+        // Selecing a customer meens autoselect its last memo
+        const memos = state._getMemosForCustomer(state)
+        if (memos.length > 0) {
+            state.selectedMemo = memos[0]
+        }
     }),
 
     selectedMemo: null,
@@ -103,10 +116,11 @@ export const crmModel: CrmModel = {
         state.selectedMemo = memo
     }),
 
-    memosForCustomer: computed((state)=>
-        state.memos
-            .filter((memo) => state.selectedCustomer?.id === memo.customer_id)
-            .sort((left, right) => right.date - left.date)
-            // .sort((left, right) => left.date - right.date)
-    )
+    memosForCustomer: computed((state)=> state._getMemosForCustomer(state)),
+
+    _getMemosForCustomer(state:any): Memo[] {
+        return state.memos
+        .filter((memo: Memo) => state.selectedCustomer?.id === memo.customer_id)
+        .sort((left: Memo, right: Memo) => right.date - left.date)
+    }
 }
