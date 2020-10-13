@@ -3,6 +3,8 @@ export type UniqueKey = string | number | null
 export interface Customer {
     id: UniqueKey,
     name: string,
+    street: string,
+    city: string
 }
 
 export interface Memo {
@@ -15,10 +17,14 @@ export interface Memo {
 export class CustomerImpl implements Customer {
     id: UniqueKey
     name: string
+    street: string
+    city: string
 
-    constructor(name: string) {
+    constructor(name: string, street?: string, city?: string) {
         this.id = null;
         this.name = name
+        this.street = street ? street : '';
+        this.city = city ? city : '';
     }
 }
 

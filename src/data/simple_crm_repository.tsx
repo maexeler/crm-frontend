@@ -1,9 +1,10 @@
 import {Customer, Memo} from '../model/crm'
 
 export const customerList: Customer[] = [
-    {id: 1, name: 'Max'},
-    {id: 2, name: 'Trax'},
-    {id: 3, name: 'Gigax'},
+    {id: 1, name: 'Max', street: '', city: ''},
+    {id: 2, name: 'Trax', street: '', city: ''},
+    {id: 3, name: 'Gigax', street: '', city: ''}
+    
 ]
 
 export const memoList: Memo[] = [
