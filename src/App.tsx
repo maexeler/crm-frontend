@@ -5,6 +5,7 @@ import CrmPage from './component/crm/CrmPage'
 import AboutPage from './component/about/AboutPage'
 import PageNotFoundPage from './component/notfound/PageNotFoundPage'
 
+// import { useCrmInitDataHook } from './model/crm_data_init_hook'
 import { useCrmInitDataHook } from './model/crm_data_init_hook'
 
 import { useLocation } from 'react-router-dom'

@@ -1,5 +1,6 @@
 import { createStore, createTypedHooks } from 'easy-peasy'
-import { CrmModel, crmModel } from '../model/crm_model'
+// import { CrmModel, crmModel } from '../model/crm_model'
+import { CrmModel, crmModel } from '../model/crm_model_service'
 
 // StoreModel may contain several Models
 interface StoreModel {

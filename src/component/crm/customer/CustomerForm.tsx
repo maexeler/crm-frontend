@@ -16,10 +16,15 @@ const CustomerForm: React.FC<CustomerFormProps> = ({customer, submitText, submit
 	return (
 		<Formik
 			enableReinitialize={true}
-			initialValues={{name: customer.name}}
+			initialValues={{
+				name: customer.name, 
+				street: customer.street, 
+				city: customer.city}}
 			validationSchema={todoValidationSchema}
 			onSubmit={(values, {resetForm}) => {
 				customer.name = values.name
+				customer.street = values.street
+				customer.city = values.city
 				submitFunction(customer)
 				if (resetFormAfterSubmit) { resetForm() }
 			}}
@@ -40,11 +45,27 @@ const CustomerForm: React.FC<CustomerFormProps> = ({customer, submitText, submit
 							}
 						</Grid>
 						<Grid item >
+							<Field
+								name = 'street'
+								component={MaterialUiField}
+								placeholder='Enter a street'
+								label='street'
+							/>
+						</Grid>
+						<Grid item >
+							<Field
+								name = 'city'
+								component={MaterialUiField}
+								placeholder='Enter a city'
+								label='city'
+							/>
+						</Grid>
+						<Grid item >
 							<Button
 								type='submit'
 								variant='contained' color='primary' fullWidth
 							>
-									{submitText}
+								{submitText}
 							</Button>
 						</Grid>
 					</Grid>
