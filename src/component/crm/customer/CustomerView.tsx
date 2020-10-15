@@ -33,14 +33,10 @@ const ShowCustomer: React.FC<ShowCustomerProps> = ({customer}) => {
         <Card variant='outlined'>
             <CardContent>
             <Typography >{customer?.name}</Typography>
+            <Typography >{customer?.street}</Typography>
+            <Typography >{customer?.city}</Typography>
             </CardContent>
         </Card>
-        // <Grid container direction='column' spacing={1}>
-        //     { customer
-        //         ? <Grid item > <Typography >{customer?.name}</Typography> </Grid>
-        //         : null
-        //     }
-        // </Grid>
     )
 }
 
