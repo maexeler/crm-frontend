@@ -37,8 +37,8 @@ const ShowMemo: React.FC<ShowMemoProps> = ({memo}) => {
     return (
         <Card variant='outlined'>
             <CardContent>
-            <Typography >{date.toLocaleString()}</Typography>
             <Typography >{memo.note}</Typography>
+            <Typography >{date.toLocaleString()}</Typography>
             </CardContent>
         </Card>
     )
