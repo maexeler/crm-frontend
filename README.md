@@ -34,13 +34,13 @@ interface Memo {
 
 | Http   | Rout                              | Params   | Return     | Description                                                                           |
 |--------|-----------------------------------|----------|------------|---------------------------------------------------------------------------------------|
-|
+||
 | **Customer**|
 | GET    | /customers                        |          | Customer[] | Get all customers                                                                     |
 | DELETE | /customers/{id}                   |          |            | Delete customer with ID {id}                                                          |
 | PUT    | /customers/{id}                   | Customer | Customer   | Update customer with ID {id}                                                          |
 | POST   | /customers                        | Customer | Customer   | Add a new customer                                                                    |
-|
+||
 | **Memos**  |
 | GET    | /customers/{id}/memos             |          | Memo[]     | Get all memos for the customer with ID {id}                                           |
 | POST   | /customers/{id}/memos             | Memo     | Memo       | Add a new memo for the customer wit ID {id}                                           |
